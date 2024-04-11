@@ -1,0 +1,121 @@
+{% load static %}
+
+<html>
+<head>
+    <title>Flight Testing Lab</title>
+    <link rel="stylesheet" href="{% static 'cansatapp/style.css' %}">
+    <style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 0, 0, 0.5); 
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+        }
+
+        .message-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            width: 258px
+        }
+
+        
+        .ok-button {
+            background-color: #0074cc; 
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="content" class="content">
+        <div id="top_section" class="top_section">
+            <!-- <img src="{% static 'cansatapp/image/logo.png' %}"> -->
+            <h2 id="team_name" class="team_name">Flight Testing Lab</h2>
+            <h1 id="title" class="title" style="left: 359px;">CADRE</h1>
+        </div>
+        <div id="main_body" class="main_body">
+            <div id="plots" class="plots">
+                <div id="H1" class="H1">
+                    <h1>PLOTS</h1>
+                </div>
+                <div id="P1" class="P1">
+                    <img class="resize_p1" src="../../static/cansatapp/graphs/altitude.png">
+                    <span id="tag" class="tag" style="color: antiquewhite; font-size: large; left: 24%;">CO</span>
+                    <span id="tag" class="tag1" style="color: antiquewhite; font-size:medium; ">(Current avg of last 2 sec)</span>
+                </div>
+                <div id="P2" class="P2">
+                    <img class="resize_p2" src="../../static/cansatapp/graphs/preasure.png">
+                    <span id="tag" class="tag" style="color: antiquewhite; font-size: large; left: 22%;">NOx</span>
+                    <span id="tag" class="tag1" style="color: antiquewhite; font-size: medium;">(Current avg of last 2 sec)</span>
+                </div>
+                <div id="P3" class="P3">
+                    <img class="resize_p3" src="../../static/cansatapp/graphs/temp.png">
+                    <span id="tag" class="tag" style="color: antiquewhite; font-size: large; left: 11%;">Particulate Matter</span>
+                    <span id="tag" class="tag1" style="color: antiquewhite; font-size: medium; left: 50%;">(Current avg of last 2 sec)</span>
+                </div>
+                <div id="P4" class="P4">
+                    <img class="resize_p1" src="../../static/cansatapp/graphs/altitude.png">
+                    <span id="tag" class="tag" style="color: antiquewhite; font-size: large; left: 24%;">CO</span>
+                    <span id="tag" class="tag1" style="color: antiquewhite; font-size:medium; ">(Current avg of last 2 sec)</span>
+                </div>
+                <div id="P5" class="P5">
+                    <img class="resize_p2" src="../../static/cansatapp/graphs/preasure.png">
+                    <span id="tag" class="tag" style="color: antiquewhite; font-size: large; left: 22%;">NOx</span>
+                    <span id="tag" class="tag1" style="color: antiquewhite; font-size: medium;">(Current avg of last 2 sec)</span>
+                </div>
+                <div id="P6" class="P6">
+                    <img class="resize_p3" src="../../static/cansatapp/graphs/temp.png">
+                    <span id="tag" class="tag" style="color: antiquewhite; font-size: large; left: 11%;">Particulate Matter</span>
+                    <span id="tag" class="tag1" style="color: antiquewhite; font-size: medium; left: 50%;">(Current avg of last 2 sec)</span>
+                </div>
+                <!--<div id="data" class="data" style="width: 283px; height: 228px;">
+                <div id="H2" class="H2">
+                    <h1>DATA</h1>
+                </div>
+                <br><br><br><br>
+                <span>&nbsp CO Concentration : {{co}}</span><br><br>
+                <span>&nbsp NOx Concentration : {{nox}}</span><br><br>
+                <span>&nbsp Pm Concentration: {{pm}}</span><br><br>
+                <span>&nbsp Average Threshold: {{pm}}</span><br><br>
+            </div>-->
+        </div>
+    </div>
+    
+    <!--<div class="overlay" id="alertOverlay">
+        <div class="message-box">
+            <h2>Danger</h2>
+            <p>Gas Name above Threshold: co</p>
+            <p>Gas current Conc: {{co}}</p>
+            <p>Gas Threshold COnc: {{co}}</p>
+            <button class="ok-button" id="okButton">OK</button>
+        </div>
+    </div>-->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                var alertOverlay = document.getElementById('alertOverlay');
+                alertOverlay.style.display = 'flex';
+            }, 3000);
+
+            var okButton = document.getElementById('okButton');
+            okButton.addEventListener('click', function() {
+                var alertOverlay = document.getElementById('alertOverlay');
+                alertOverlay.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
